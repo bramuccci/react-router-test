@@ -1,9 +1,9 @@
 import React from 'react'
 import { HashRouter, Routes, Route } from 'react-router-dom'
-import { HomePage } from './components/HomePage'
-import { BlogPage } from './components/BlogPage'
-import { ProfilePage } from './components/ProfilePage'
-import { NotFound } from './components/NotFound'
+import { HomePage } from './pages/HomePage'
+import { BlogPage } from './pages/BlogPage'
+import { ProfilePage } from './pages/ProfilePage'
+import { NotFound } from './pages/NotFound'
 import { Menu } from './components/Menu'
 import { BlogPost } from './components/BlogPost'
 

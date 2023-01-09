@@ -1,6 +1,6 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
-import { blogData } from './blogdata'
+import { blogData } from '../data/blogdata'
 
 export function BlogPost() {
     const { slug } = useParams()
