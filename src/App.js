@@ -14,8 +14,9 @@ export default function App() {
                 <Menu />
                 <Routes>
                     <Route path="/" element={<HomePage />} />
-                    <Route path="/blog" element={<BlogPage />} />
-                    <Route path="/blog/:slug" element={<BlogPost />} />
+                    <Route path="/blog" element={<BlogPage />}>
+                        <Route path=":slug" element={<BlogPost />} />
+                    </Route>
                     <Route path="/profile" element={<ProfilePage />} />
                     <Route path="*" element={<NotFound />} />
                 </Routes>

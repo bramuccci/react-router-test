@@ -1,11 +1,13 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Outlet } from 'react-router-dom'
 import { blogData } from '../data/blogdata'
 
 export function BlogPage() {
     return (
         <>
             <h1>BlogPage</h1>
+
+            <Outlet />
             <ul>
                 {blogData.map(post => (
                     <BlogLink key={post.slug} post={post}></BlogLink>
