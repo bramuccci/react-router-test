@@ -5,6 +5,7 @@ import { BlogPage } from './components/BlogPage'
 import { ProfilePage } from './components/ProfilePage'
 import { NotFound } from './components/NotFound'
 import { Menu } from './components/Menu'
+import { BlogPost } from './components/BlogPost'
 
 export default function App() {
     return (
@@ -14,6 +15,7 @@ export default function App() {
                 <Routes>
                     <Route path="/" element={<HomePage />} />
                     <Route path="/blog" element={<BlogPage />} />
+                    <Route path="/blog/:slug" element={<BlogPost />} />
                     <Route path="/profile" element={<ProfilePage />} />
                     <Route path="*" element={<NotFound />} />
                 </Routes>
