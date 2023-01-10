@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Navigate, useNavigate } from 'react-router-dom'
 
 const AuthContext = createContext()
 
@@ -22,4 +22,11 @@ export function AuthProvider({ children }) {
 export function useAuth() {
     const auth = useContext(AuthContext)
     return auth
+}
+
+export function AuthRoute({ children }) {
+    const auth = useAuth()
+
+    if (!auth.user) return <Navigate to="/login" />
+    return children
 }

@@ -8,7 +8,7 @@ import { Menu } from './components/Menu'
 import { BlogPost } from './components/BlogPost'
 import { LoginPage } from './pages/LoginPage'
 import { LogoutPage } from './pages/LogoutPage'
-import { AuthProvider } from './components/auth'
+import { AuthProvider, AuthRoute } from './components/auth'
 
 export default function App() {
     return (
@@ -21,9 +21,23 @@ export default function App() {
                         <Route path="/blog" element={<BlogPage />}>
                             <Route path=":slug" element={<BlogPost />} />
                         </Route>
-                        <Route path="/profile" element={<ProfilePage />} />
+                        <Route
+                            path="/profile"
+                            element={
+                                <AuthRoute>
+                                    <ProfilePage />
+                                </AuthRoute>
+                            }
+                        />
                         <Route path="/login" element={<LoginPage />} />
-                        <Route path="/logout" element={<LogoutPage />} />
+                        <Route
+                            path="/logout"
+                            element={
+                                <AuthRoute>
+                                    <LogoutPage />
+                                </AuthRoute>
+                            }
+                        />
                         <Route path="*" element={<NotFound />} />
                     </Routes>
                 </AuthProvider>
