@@ -6,11 +6,13 @@ import { useAuth } from './auth'
 export function BlogPost() {
     const navigate = useNavigate()
     const { slug } = useParams()
-    const auth = useAuth()
+    const { user } = useAuth()
 
     const blogPost = blogData.find(post => post.slug === slug)
-    const userHasPermission =
-        auth.user?.isAdmin || auth.user?.username === blogPost.author
+    const userIsAuthor = user?.username === blogPost.author
+    const userIsEditor = user?.isEditor
+    const userIsSpellChecker = user?.isSpellChecker
+    const userIsModerator = user?.isModerator
 
     const returnToBlog = () => {
         navigate('/blog')
@@ -23,7 +25,12 @@ export function BlogPost() {
             <li>{blogPost.author}</li>
             <p>{blogPost.content}</p>
 
-            {userHasPermission && <button>delete blog</button>}
+            {userIsModerator && <button>mark as best</button>}
+            {(userIsModerator || userIsAuthor) && <button>delete blog</button>}
+            {(userIsEditor || userIsAuthor) && <button>Modify blog</button>}
+            {(userIsSpellChecker || userIsAuthor) && (
+                <button>Correct spelling</button>
+            )}
         </>
     )
 }

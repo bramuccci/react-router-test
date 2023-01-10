@@ -3,15 +3,20 @@ import { Navigate, useNavigate } from 'react-router-dom'
 
 const AuthContext = createContext()
 
-const adminList = ['a1', 'b2', 'c3']
+const moderators = ['m1', 'm2', 'm3']
+const spellCheckers = ['sp1', 'sp2', 'sp3']
+const editors = ['e1', 'e2', 'e1']
 
 export function AuthProvider({ children }) {
     const navigate = useNavigate()
     const [user, setUser] = useState(null)
 
     const login = ({ username }) => {
-        const isAdmin = adminList.find(admin => admin === username)
-        setUser({ username, isAdmin })
+        const isModerator = moderators.find(mod => mod === username)
+        const isSpellChecker = spellCheckers.find(sp => sp === username)
+        const isEditor = editors.find(ed => ed === username)
+
+        setUser({ username, isModerator, isEditor, isSpellChecker })
         navigate('/profile')
     }
 
