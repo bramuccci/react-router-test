@@ -3,12 +3,15 @@ import { Navigate, useNavigate } from 'react-router-dom'
 
 const AuthContext = createContext()
 
+const adminList = ['a1', 'b2', 'c3']
+
 export function AuthProvider({ children }) {
     const navigate = useNavigate()
     const [user, setUser] = useState(null)
 
     const login = ({ username }) => {
-        setUser({ username })
+        const isAdmin = adminList.find(admin => admin === username)
+        setUser({ username, isAdmin })
         navigate('/profile')
     }
 
